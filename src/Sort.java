@@ -40,12 +40,40 @@ public class Sort
   // Part C.  Sorting a 1000-word list!
   public static void selectionSortWordList(ArrayList<String> words)
   {
-    /* TO BE IMPLEMENTED IN PART C */
+    int count = 0;
+
+    for (int i = 0; i < words.size(); i++) {
+      int min = i;
+      for (int j = i+1; j < words.size(); j++) {
+        count++;
+        if(words.get(i).compareTo(words.get(min)) < 0) {
+          min = j;
+        }
+      }
+      String str = words.get(i);
+      words.set(i, words.get(min));
+      words.set(min, str);
+    }
+
+    System.out.println("Selection sort, num of iterations: " + count);
   }
 
   // Part C.  Sorting a 1000-word list!
   public static void insertionSortWordList(ArrayList<String> words)
   {    
-    /* TO BE IMPLEMENTED IN PART C */
+    int count = 0;
+
+    for (int i = 0; i < words.size(); i++) {
+      String str = words.get(i);
+      int possible = i;
+      while (possible > 0 && str.compareTo(words.get(possible - 1)) < 0) {
+        words.set(possible, words.get(possible - 1));
+        possible--;
+        count++;
+      }
+      words.set(possible, str);
+    }
+
+    System.out.println("Iteration sort, num of iterations: " + count);
   }
 }
